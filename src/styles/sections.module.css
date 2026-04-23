@@ -1,0 +1,47 @@
+/* Section Global Wrappers */
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 6rem 1rem;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.gridSection {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gridSectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.ctaSection {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  border-radius: 20px;
+  max-width: 1000px;
+  margin: 4rem auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

@@ -1,66 +1,31 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { PageService } from '@/services/PageService';
+import PageRenderer from '@/lib/pageRenderer';
+import Link from 'next/link';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+export const dynamic = 'force-dynamic'; // Guarantees fresh SSR CMS content rather than stale build-time HTML
+
+export default async function HomePage() {
+  // Attempt to load a page explicitly designated with the slug "home"
+  const pageData = await PageService.getPageBySlug('home');
+
+  if (!pageData || pageData.status === 'draft') {
+    return (
+      <main style={{ padding: '8rem 2rem', textAlign: 'center', fontFamily: 'sans-serif', backgroundColor: '#f8fafc', minHeight: '100vh' }}>
+        <h1 style={{ fontSize: '2.5rem', color: '#0f172a', marginBottom: '1rem' }}>Welcome to the Next.js NGO System</h1>
+        <p style={{ color: '#475569', fontSize: '1.2rem', marginBottom: '2rem' }}>
+          Your Neon Database is connected securely, but no <strong>"home"</strong> page has been created yet.
+        </p>
+        <Link href="/admin" style={{ padding: '10px 20px', backgroundColor: '#2563eb', color: 'white', textDecoration: 'none', borderRadius: '8px', fontWeight: 'bold' }}>
+          Enter Admin Dashboard
+        </Link>
       </main>
-    </div>
+    );
+  }
+
+  return (
+    <main>
+      {/* If "home" exists, run it through the Renderer exactly like any dynamic page */}
+      <PageRenderer sections={pageData.sections} />
+    </main>
   );
 }
