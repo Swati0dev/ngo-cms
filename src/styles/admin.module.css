@@ -1,0 +1,86 @@
+.dashboardContainer {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+.submissionsTableWrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.submissionsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.submissionsTable th {
+  background-color: #f8fafc;
+  padding: 1rem;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.submissionsTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+  vertical-align: top;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem !important;
+  color: #94a3b8 !important;
+  font-style: italic;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.unread {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.read {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.responded {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.messageCell {
+  max-width: 300px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
