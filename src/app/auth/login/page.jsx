@@ -17,17 +17,23 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (res?.error) {
-      setError("Invalid email or password");
+      if (res?.error) {
+        setError(res.error || "Invalid email or password");
+        setLoading(false);
+      } else {
+        router.push("/admin");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Server connection failed. Check NEXTAUTH_URL in Vercel.");
       setLoading(false);
-    } else {
-      router.push("/admin");
     }
   };
 
