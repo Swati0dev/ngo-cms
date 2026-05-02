@@ -111,3 +111,8 @@ This document tracks completed tasks, architecture changes, and phase status.
 - **What was done:** Performed a full system audit, fixed case-sensitivity issues in dynamic routing, and successfully pushed the entire codebase to GitHub.
 - **How it was done:** Executed the `verification-workflow.md`. Identified and fixed broken imports in `src/app/(public)/[slug]/page.jsx` where `PageService` and `PageRenderer` had incorrect casing. Renamed `middleware.js` to `proxy.js` to comply with Next.js 16 deprecation warnings. Verified build integrity via `npm run build` and pushed to `origin main`.
 - **Files Created/Modified:** `src/app/(public)/[slug]/page.jsx`, `src/proxy.js`, `project-logs/phase-log.md`.
+## **Phase 12: Admin Dashboard Enhancements & Bug Fixes**
+**Date:** 2026-05-02
+- **What was done:** Fixed the broken 'Build UI' link and implemented full page deletion capabilities.
+- **How it was done:** Identified a routing mismatch where the dashboard was linking to a non-existent route; updated the link to point to the correct `/builder` endpoint. Developed a new `DELETE` API method in `api/pages/route.js` and a corresponding service method in `pageService.js` to enable secure page removal. Added a 'Delete' action button to the Admin UI with a safety confirmation dialog.
+- **Files Created/Modified:** `src/app/admin/page.jsx`, `src/services/pageService.js`, `src/app/api/pages/route.js`, `project-logs/phase-log.md`.

@@ -145,11 +145,11 @@ export default function PageBuilder({ params }) {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>{index + 1}. {section.type}</span>
+                <span style={{ fontWeight: '700', fontSize: '0.9rem', color: '#0f172a' }}>{index + 1}. {section.type}</span>
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  <button onClick={(e) => { e.stopPropagation(); moveSection(index, 'up'); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#94a3b8' }}><ArrowUp size={16} /></button>
-                  <button onClick={(e) => { e.stopPropagation(); moveSection(index, 'down'); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#94a3b8' }}><ArrowDown size={16} /></button>
-                  <button onClick={(e) => { e.stopPropagation(); deleteSection(section.id); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#ef4444' }}><Trash2 size={16} /></button>
+                  <button onClick={(e) => { e.stopPropagation(); moveSection(index, 'up'); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#475569' }}><ArrowUp size={16} /></button>
+                  <button onClick={(e) => { e.stopPropagation(); moveSection(index, 'down'); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#475569' }}><ArrowDown size={16} /></button>
+                  <button onClick={(e) => { e.stopPropagation(); deleteSection(section.id); }} style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#dc2626' }}><Trash2 size={16} /></button>
                 </div>
               </div>
             </div>
@@ -163,17 +163,18 @@ export default function PageBuilder({ params }) {
               const config = SECTION_REGISTRY[type];
               const Icon = config.icon;
               return (
-                <button 
-                  key={type}
-                  onClick={() => addSection(type)} 
-                  style={{ 
-                    display: 'flex', alignItems: 'center', gap: '8px', padding: '10px', 
-                    fontSize: '0.8rem', cursor: 'pointer', borderRadius: '4px', 
-                    border: '1px solid #cbd5e1', backgroundColor: '#f8fafc' 
-                  }}
-                >
-                  <Icon size={14} /> {config.name}
-                </button>
+                  <button 
+                    key={type}
+                    onClick={() => addSection(type)} 
+                    style={{ 
+                      display: 'flex', alignItems: 'center', gap: '8px', padding: '10px', 
+                      fontSize: '0.8rem', cursor: 'pointer', borderRadius: '4px', 
+                      border: '1px solid #94a3b8', backgroundColor: '#ffffff',
+                      color: '#0f172a', fontWeight: '600'
+                    }}
+                  >
+                    <Icon size={14} color="#2563eb" /> {config.name}
+                  </button>
               );
             })}
           </div>
@@ -184,8 +185,8 @@ export default function PageBuilder({ params }) {
       <div style={{ flex: 1, padding: '2.5rem', backgroundColor: 'white' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', borderBottom: '1px solid #f1f5f9', paddingBottom: '1.5rem' }}>
           <div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Editing: {page?.title}</h2>
-            <p style={{ color: '#64748b' }}>Route: /{page?.slug}</p>
+            <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#0f172a', margin: 0 }}>Editing: {page?.title}</h2>
+            <p style={{ color: '#475569', fontWeight: '500', marginTop: '4px' }}>Route: /{page?.slug}</p>
           </div>
           <div style={{ display: 'flex', gap: '1rem' }}>
              <Link href={`/${page?.slug}`} target="_blank" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', border: '1px solid #cbd5e1', borderRadius: '6px', textDecoration: 'none', color: '#1e293b', fontWeight: '600' }}>
@@ -252,9 +253,13 @@ export default function PageBuilder({ params }) {
                            // Invalid JSON, ignore until fixed
                          }
                        }} 
-                       style={{ width: '100%', padding: '1rem', border: '1px solid #cbd5e1', borderRadius: '4px', fontFamily: 'monospace', fontSize: '14px', backgroundColor: '#f1f5f9' }} 
-                       rows="15" 
-                     />
+                        style={{ 
+                          width: '100%', padding: '1.2rem', border: '2px solid #cbd5e1', 
+                          borderRadius: '8px', fontFamily: 'monospace', fontSize: '14px', 
+                          backgroundColor: '#f8fafc', color: '#1e293b', lineHeight: '1.5'
+                        }} 
+                        rows="15" 
+                      />
                    </div>
                  </>
                )}
