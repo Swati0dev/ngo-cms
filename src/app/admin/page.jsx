@@ -7,8 +7,8 @@ export default function AdminPagesList() {
   const [pages, setPages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Poll our internal Phase 6 API strictly on the client
-  useEffect(() => {
+  const fetchPages = () => {
+    setLoading(true);
     fetch('/api/pages')
       .then(res => res.json())
       .then(data => {
@@ -21,7 +21,33 @@ export default function AdminPagesList() {
         console.error("Dashboard Fetch Error", err);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchPages();
   }, []);
+
+  const handleDeletePage = async (pageId, title) => {
+    if (!confirm(`Are you sure you want to delete "${title}"? This will also delete all sections within it.`)) return;
+
+    try {
+      const response = await fetch('/api/pages', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pageId }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        alert('Page deleted successfully');
+        fetchPages();
+      } else {
+        alert('Error: ' + data.error);
+      }
+    } catch (error) {
+      alert('Failed to delete page');
+    }
+  };
 
   return (
     <div>
@@ -70,12 +96,18 @@ export default function AdminPagesList() {
                     </span>
                   </td>
                   <td style={{ padding: '1rem 1.5rem' }}>
-                    <Link href={`/admin/pages/${page.id}`} style={{ color: '#2563eb', textDecoration: 'none', marginRight: '1.5rem', fontWeight: '500' }}>
+                    <Link href={`/admin/pages/${page.id}/builder`} style={{ color: '#2563eb', textDecoration: 'none', marginRight: '1rem', fontWeight: '500' }}>
                       Build UI
                     </Link>
-                    <Link href={`/${page.slug === 'home' ? '' : page.slug}`} target="_blank" style={{ color: '#10b981', textDecoration: 'none', fontWeight: '500' }}>
+                    <Link href={`/${page.slug === 'home' ? '' : page.slug}`} target="_blank" style={{ color: '#10b981', textDecoration: 'none', marginRight: '1rem', fontWeight: '500' }}>
                       Test Live
                     </Link>
+                    <button 
+                      onClick={() => handleDeletePage(page.id, page.title)}
+                      style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', fontWeight: '500', padding: 0 }}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

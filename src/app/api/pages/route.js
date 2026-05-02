@@ -42,3 +42,19 @@ export async function POST(request) {
     return NextResponse.json({ success: false, error: 'Failed to create page' }, { status: 500 });
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const { pageId } = await request.json();
+    
+    if (!pageId) {
+      return NextResponse.json({ success: false, error: 'Missing pageId' }, { status: 400 });
+    }
+
+    await PageService.deletePage(pageId);
+    return NextResponse.json({ success: true, message: 'Page deleted successfully' });
+  } catch (error) {
+    console.error('API DELETE /api/pages error:', error);
+    return NextResponse.json({ success: false, error: 'Failed to delete page' }, { status: 500 });
+  }
+}

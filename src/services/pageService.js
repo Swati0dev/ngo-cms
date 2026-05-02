@@ -56,4 +56,20 @@ export class PageService {
       throw new Error('Failed to create page');
     }
   }
+
+  /**
+   * Deletes a page and all its associated sections
+   */
+  static async deletePage(pageId) {
+    try {
+      // Prisma handles cascading deletes if configured in schema, 
+      // but we ensure sections are gone too.
+      return await prisma.page.delete({
+        where: { id: pageId }
+      });
+    } catch (error) {
+      console.error('PageService.deletePage Error:', error);
+      throw new Error('Failed to delete page');
+    }
+  }
 }
