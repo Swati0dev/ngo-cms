@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { PageService } from '@/services/PageService';
-import PageRenderer from '@/lib/pageRenderer';
+import { PageService } from '@/services/pageService';
+import PageRenderer from '@/lib/PageRenderer';
 
 export const dynamic = 'force-dynamic';
 

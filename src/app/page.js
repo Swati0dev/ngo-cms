@@ -1,5 +1,5 @@
-import { PageService } from '@/services/PageService';
-import PageRenderer from '@/lib/pageRenderer';
+import { PageService } from '@/services/pageService';
+import PageRenderer from '@/lib/PageRenderer';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic'; // Guarantees fresh SSR CMS content rather than stale build-time HTML

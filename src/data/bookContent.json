@@ -1,0 +1,72 @@
+{
+  "bookTitle": "Golden Easy English Translation II",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Lesson 1: Indefinite Article: A",
+      "description": "Rules for using 'a' before words starting with a consonant sound.",
+      "examples": [
+        { "hi": "यह चिड़िया है।", "en": "This is a bird." },
+        { "hi": "वह चिड़िया है।", "en": "That is a bird." },
+        { "hi": "यह रेडियो है।", "en": "This is a radio." },
+        { "hi": "वह रेडियो नहीं है।", "en": "That is not a radio." },
+        { "hi": "क्या यह रेडियो है?", "en": "Is this a radio?" }
+      ],
+      "vocabulary": [
+        { "en": "a", "hi": "एक" },
+        { "en": "bird", "hi": "चिड़िया" },
+        { "en": "radio", "hi": "रेडियो" },
+        { "en": "map", "hi": "नक्शा" },
+        { "en": "tree", "hi": "पेड़" },
+        { "en": "fair", "hi": "मेला" },
+        { "en": "shop", "hi": "दुकान" }
+      ],
+      "exercises": [
+        {
+          "type": "Translate into English",
+          "items": [
+            "यह पेड़ है।",
+            "वह पेड़ नहीं है।",
+            "क्या यह पेड़ है?",
+            "वह दुकान है।",
+            "यह दुकान नहीं है।",
+            "क्या वह दुकान है?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Lesson 2: Indefinite Article: AN",
+      "description": "Rules for using 'an' before words starting with a vowel sound (a, e, i, o, u).",
+      "examples": [
+        { "hi": "यह चींटी है।", "en": "This is an ant." },
+        { "hi": "वह चींटी नहीं है।", "en": "That is not an ant." },
+        { "hi": "क्या यह चींटी है?", "en": "Is this an ant?" }
+      ],
+      "vocabulary": [
+        { "en": "an", "hi": "एक" },
+        { "en": "ant", "hi": "चींटी" },
+        { "en": "egg", "hi": "अंडा" },
+        { "en": "eye", "hi": "आँख" },
+        { "en": "ear", "hi": "कान" },
+        { "en": "apple", "hi": "सेब" },
+        { "en": "owl", "hi": "उल्लू" },
+        { "en": "aeroplane", "hi": "हवाई जहाज" }
+      ],
+      "exercises": [
+        {
+          "type": "Translate into English",
+          "items": [
+            "यह उल्लू है।",
+            "वह उल्लू नहीं है।",
+            "क्या यह उल्लू है?",
+            "वह हवाई जहाज है।",
+            "यह हवाई जहाज नहीं है।",
+            "क्या वह हवाई जहाज है?"
+          ]
+        }
+      ]
+    }
+  ]
+}

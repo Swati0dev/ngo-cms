@@ -6,6 +6,13 @@ You must follow this system strictly.
 
 ---
 
+## 🛑 CRITICAL USER RULES
+
+1. **Explicit Permission**: Never make any changes to the codebase (files, logic, or structure) without the user's explicit permission. You must always present a plan and wait for approval.
+2. **Project Organization**: Arrange all files and folders in the correct, standardized order according to modern Next.js best practices.
+
+---
+
 ## 🧠 SYSTEM UNDERSTANDING
 
 1. gemini.md is the highest authority
@@ -107,6 +114,25 @@ If any step:
 
 ---
 
+## 📂 PROJECT STRUCTURE STANDARDS (Next.js)
+
+To maintain "Correct Order", follow this organization:
+
+1. **`src/app/`**: All routing and page layouts.
+2. **`src/components/layout/`**: Global components (Header, Footer, Sidebar).
+3. **`src/components/ui/`**: Reusable atomic components (Buttons, Inputs, Cards).
+4. **`src/components/sections/`**: Large page sections (Hero, Newsletter, etc.).
+5. **`src/services/`**: Business logic, API calls, and data fetching.
+6. **`src/lib/`**: External library instances (Prisma, Razorpay, etc.).
+7. **`src/styles/`**: All CSS and styling configurations.
+8. **`src/utils/`**: General helper functions.
+
+Naming Convention:
+* **Components**: PascalCase (e.g., `HeroSection.jsx`).
+* **Everything else**: camelCase (e.g., `pageService.js`).
+
+---
+
 ## 🎯 TASK
 
 Now confirm that you understand:
@@ -114,5 +140,6 @@ Now confirm that you understand:
 * system structure
 * workflow usage
 * stack detection rule
+* **Critical User Rules (Permission & Organization)**
 
 Then proceed with implementation starting from Phase 1 using correct workflows.

@@ -212,91 +212,49 @@ export default function PageBuilder({ params }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                {activeSection.type === 'HERO' && (
                  <>
-                   <div>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Hero Title</label>
-                     <input type="text" value={activeSection.payload.title || ''} onChange={(e) => updatePayload('title', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
-                   </div>
-                   <div>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Subtitle</label>
-                     <textarea rows="3" value={activeSection.payload.subtitle || ''} onChange={(e) => updatePayload('subtitle', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
-                   </div>
-                   <div>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Background Image URL</label>
-                     <input type="text" value={activeSection.payload.bgImage || ''} onChange={(e) => updatePayload('bgImage', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Mission Badge</label>
+                     <input type="text" value={activeSection.payload.missionBadge || ''} onChange={(e) => updatePayload('missionBadge', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Hero Title</label>
+                     <input type="text" value={activeSection.payload.title || ''} onChange={(e) => updatePayload('title', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Subtitle</label>
+                     <textarea rows="3" value={activeSection.payload.subtitle || ''} onChange={(e) => updatePayload('subtitle', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Background Image URL</label>
+                     <input type="text" value={activeSection.payload.bgImage || ''} onChange={(e) => updatePayload('bgImage', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                   <div style={{display:'flex', gap:'1rem'}}>
+                     <div style={{flex:1}}><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Button 1 Label</label>
+                       <input type="text" value={activeSection.payload.button1?.label || ''} onChange={(e) => updatePayload('button1', {...activeSection.payload.button1, label: e.target.value})} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                     <div style={{flex:1}}><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Button 2 Label</label>
+                       <input type="text" value={activeSection.payload.button2?.label || ''} onChange={(e) => updatePayload('button2', {...activeSection.payload.button2, label: e.target.value})} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
                    </div>
                  </>
                )}
 
                {activeSection.type === 'CTA' && (
                  <>
-                   <div>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>CTA Heading</label>
-                     <input type="text" value={activeSection.payload.heading || ''} onChange={(e) => updatePayload('heading', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
-                   </div>
-                   <div>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Body Text</label>
-                     <textarea rows="3" value={activeSection.payload.text || ''} onChange={(e) => updatePayload('text', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
-                   </div>
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>CTA Heading</label><input type="text" value={activeSection.payload.heading || ''} onChange={(e) => updatePayload('heading', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
+                   <div><label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Body Text</label><textarea rows="3" value={activeSection.payload.text || ''} onChange={(e) => updatePayload('text', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} /></div>
                  </>
                )}
 
-               {activeSection.type === 'CARD_GRID' && (
+               {['GLOBAL_HEADER', 'GLOBAL_FOOTER', 'STATS', 'EVENTS', 'SUCCESS_STORIES', 'NEWSLETTER', 'CARD_GRID'].includes(activeSection.type) && (
                  <>
                    <div style={{ marginBottom: '1.5rem' }}>
-                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem' }}>Section Title</label>
-                     <input type="text" value={activeSection.payload.sectionTitle || ''} onChange={(e) => updatePayload('sectionTitle', e.target.value)} style={{ width: '100%', padding: '0.8rem', border: '1px solid #cbd5e1' }} />
-                   </div>
-                   
-                   <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
-                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                       <label style={{ fontWeight: '600' }}>Cards ({activeSection.payload.cards?.length || 0})</label>
-                       <button 
-                         onClick={() => {
-                           const currentCards = activeSection.payload.cards || [];
-                           updatePayload('cards', [...currentCards, { title: 'New Card', content: 'Card description...', image: '', link: '#', linkText: 'Learn More' }]);
-                         }}
-                         style={{ padding: '6px 12px', fontSize: '0.8rem', backgroundColor: '#2563eb', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
-                       >
-                         + Add Card
-                       </button>
-                     </div>
-
-                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                       {(activeSection.payload.cards || []).map((card, cIdx) => (
-                         <div key={cIdx} style={{ padding: '1rem', border: '1px solid #e2e8f0', borderRadius: '8px', backgroundColor: '#fcfcfc' }}>
-                           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                             <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b' }}>CARD #{cIdx + 1}</span>
-                             <button 
-                               onClick={() => {
-                                 const updatedCards = activeSection.payload.cards.filter((_, i) => i !== cIdx);
-                                 updatePayload('cards', updatedCards);
-                               }}
-                               style={{ color: '#ef4444', background: 'none', border: 'none', cursor: 'pointer' }}
-                             >
-                               <Trash2 size={14} />
-                             </button>
-                           </div>
-                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                             <input type="text" placeholder="Title" value={card.title} onChange={(e) => {
-                               const updated = [...activeSection.payload.cards];
-                               updated[cIdx].title = e.target.value;
-                               updatePayload('cards', updated);
-                             }} style={{ padding: '8px', border: '1px solid #cbd5e1' }} />
-                             
-                             <input type="text" placeholder="Image URL" value={card.image} onChange={(e) => {
-                               const updated = [...activeSection.payload.cards];
-                               updated[cIdx].image = e.target.value;
-                               updatePayload('cards', updated);
-                             }} style={{ padding: '8px', border: '1px solid #cbd5e1' }} />
-                           </div>
-                           <textarea placeholder="Description" value={card.content} onChange={(e) => {
-                             const updated = [...activeSection.payload.cards];
-                             updated[cIdx].content = e.target.value;
-                             updatePayload('cards', updated);
-                           }} style={{ width: '100%', padding: '8px', marginTop: '10px', border: '1px solid #cbd5e1' }} rows="2" />
-                         </div>
-                       ))}
-                     </div>
+                     <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: '#eab308' }}>Advanced Configuration (JSON)</label>
+                     <p style={{fontSize: '0.85rem', color: '#64748b', marginBottom: '1rem'}}>For complex layouts like {activeSection.type}, you can edit the raw JSON structure directly to update text, links, and cards.</p>
+                     <textarea 
+                       value={JSON.stringify(activeSection.payload, null, 2)} 
+                       onChange={(e) => {
+                         try {
+                           const parsed = JSON.parse(e.target.value);
+                           const updated = sections.map(s => s.id === activeSectionId ? { ...s, payload: parsed } : s);
+                           setSections(updated);
+                         } catch (err) {
+                           // Invalid JSON, ignore until fixed
+                         }
+                       }} 
+                       style={{ width: '100%', padding: '1rem', border: '1px solid #cbd5e1', borderRadius: '4px', fontFamily: 'monospace', fontSize: '14px', backgroundColor: '#f1f5f9' }} 
+                       rows="15" 
+                     />
                    </div>
                  </>
                )}

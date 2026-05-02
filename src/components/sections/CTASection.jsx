@@ -1,4 +1,4 @@
-import Button from '@/components/blocks/Button';
+import Button from '@/components/ui/Button';
 import componentStyles from '@/styles/components.module.css';
 import sectionStyles from '@/styles/sections.module.css';
 

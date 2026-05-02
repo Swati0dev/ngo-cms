@@ -1,0 +1,135 @@
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #10b981;
+}
+
+.book-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1e293b, #0f172a);
+  color: var(--text-main);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.book-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.book-header h1 {
+  font-size: 3rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lesson-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.lesson-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.lesson-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #818cf8;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
+}
+
+.section-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.example-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-hi {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+}
+
+.example-en {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.vocab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vocab-tag {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.vocab-tag:hover {
+  background: rgba(99, 102, 241, 0.2);
+  transform: scale(1.05);
+}
+
+.exercise-box {
+  border: 1px dashed var(--glass-border);
+  padding: 1rem;
+  border-radius: 16px;
+  margin-top: 1rem;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { SectionService } from '@/services/SectionService';
+import { SectionService } from '@/services/sectionService';
 
 export const dynamic = 'force-dynamic';
 

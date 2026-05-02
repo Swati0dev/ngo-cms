@@ -1,13 +1,25 @@
 import HeroSection from '@/components/sections/HeroSection';
 import CardGridSection from '@/components/sections/CardGridSection';
 import CTASection from '@/components/sections/CTASection';
+import GlobalHeader from '@/components/layout/GlobalHeader';
+import GlobalFooter from '@/components/layout/GlobalFooter';
+import StatsSection from '@/components/sections/StatsSection';
+import EventsSection from '@/components/sections/EventsSection';
+import SuccessStoriesSection from '@/components/sections/SuccessStoriesSection';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 import { SECTION_REGISTRY } from '@/config/section-registry';
 
 // Dynamic Section Map: Automatically populated from the Registry
 const SECTION_MAP = {
   HERO: HeroSection,
   CARD_GRID: CardGridSection,
-  CTA: CTASection
+  CTA: CTASection,
+  GLOBAL_HEADER: GlobalHeader,
+  GLOBAL_FOOTER: GlobalFooter,
+  STATS: StatsSection,
+  EVENTS: EventsSection,
+  SUCCESS_STORIES: SuccessStoriesSection,
+  NEWSLETTER: NewsletterSection,
 };
 
 export default function PageRenderer({ sections }) {

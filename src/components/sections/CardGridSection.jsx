@@ -1,4 +1,4 @@
-import Card from '@/components/blocks/Card';
+import Card from '@/components/ui/Card';
 import componentStyles from '@/styles/components.module.css';
 import sectionStyles from '@/styles/sections.module.css';
 
